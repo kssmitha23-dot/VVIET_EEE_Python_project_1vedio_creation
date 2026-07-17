@@ -36,7 +36,7 @@ def download_youtube_audio(url):
         'outtmpl': 'temp_audio.%(ext)s',
         'http_headers': {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-            'Accept': '/',
+            'Accept': '*/*',
             'Referer': 'https://www.google.com/',
         },
         'postprocessors': [{
@@ -90,7 +90,7 @@ def create_video(image_files, duplicate_count, fps, audio_path):
     output_filename = "output_video.mp4"
     final_clip.write_videofile(output_filename, codec="libx264", audio_codec="aac")
     return output_filename
-# --- 3. STREAMLIT UI LOGIC ---
+  # --- 3. STREAMLIT UI LOGIC ---
 
 st.set_page_config(page_title="PragyanAI Video Creator", layout="wide")
 
@@ -147,9 +147,9 @@ with col2:
 # Persistent Status Check
 st.write("---")
 if st.session_state.get('audio_path'):
-    st.success(f"🎵 *Audio Status:* Loaded and Ready ({st.session_state['audio_path']})")
+    st.success(f"🎵 **Audio Status:** Loaded and Ready ({st.session_state['audio_path']})")
 else:
-    st.warning("🎵 *Audio Status:* Not Loaded")
+    st.warning("🎵 **Audio Status:** Not Loaded")
 
 # --- 4. FINAL GENERATION ---
 st.divider()
